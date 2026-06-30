@@ -1,0 +1,242 @@
+:root {
+    --bg-primary:    #0B0E14;
+    --bg-secondary:  #11151C;
+    --bg-card:       #161B24;
+    --border:        #232938;
+    --text-primary:  #E8EAED;
+    --text-secondary:#8B92A3;
+    --accent:        #4FE0C0;
+    --accent-dim:    #2A6F62;
+    --danger:        #FF6B6B;
+    --warning:       #FFB454;
+
+    --font-display: 'JetBrains Mono', 'Courier New', monospace;
+    --font-body: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    font-family: var(--font-body);
+    min-height: 100vh;
+}
+
+.app {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+header {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--border);
+}
+
+.logo {
+    font-family: var(--font-display);
+    font-size: 1.4rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+}
+.logo span { color: var(--accent); }
+
+.tagline {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+}
+
+.control-panel {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1.25rem;
+}
+
+.control-group label {
+    display: block;
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--text-secondary);
+    margin-bottom: 0.5rem;
+}
+
+.control-group .value {
+    font-family: var(--font-display);
+    color: var(--accent);
+    float: right;
+}
+
+input[type="range"] {
+    width: 100%;
+    accent-color: var(--accent);
+}
+
+button.primary {
+    background: var(--accent);
+    color: var(--bg-primary);
+    border: none;
+    border-radius: 8px;
+    padding: 0.85rem 1.5rem;
+    font-weight: 600;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: opacity 0.15s ease;
+    grid-column: 1 / -1;
+}
+button.primary:hover { opacity: 0.85; }
+button.primary:disabled { opacity: 0.4; cursor: not-allowed; }
+
+.prediction-banner {
+    background: linear-gradient(90deg, var(--accent-dim), transparent);
+    border: 1px solid var(--accent-dim);
+    border-radius: 12px;
+    padding: 1.25rem 1.5rem;
+    margin-bottom: 1.5rem;
+    display: none;
+}
+.prediction-banner.active { display: block; }
+
+.prediction-banner .label {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--text-secondary);
+    margin-bottom: 0.4rem;
+}
+
+.prediction-banner .prediction {
+    font-family: var(--font-display);
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--accent);
+}
+
+.confidence-bars {
+    margin-top: 0.9rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+}
+
+.confidence-row {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 0.78rem;
+}
+
+.confidence-row .name {
+    width: 110px;
+    font-family: var(--font-display);
+    color: var(--text-secondary);
+}
+
+.confidence-row .bar-track {
+    flex: 1;
+    height: 6px;
+    background: var(--bg-secondary);
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+.confidence-row .bar-fill {
+    height: 100%;
+    background: var(--accent);
+    border-radius: 3px;
+    transition: width 0.4s ease;
+}
+
+.confidence-row .pct {
+    width: 45px;
+    text-align: right;
+    font-family: var(--font-display);
+    color: var(--text-secondary);
+}
+
+.race-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+}
+
+.algo-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.algo-card.winner {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 1px var(--accent), 0 0 24px -8px var(--accent);
+}
+
+.algo-card .name {
+    font-family: var(--font-display);
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    margin-bottom: 0.6rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.algo-card canvas {
+    width: 100%;
+    height: 80px;
+    display: block;
+    background: var(--bg-secondary);
+    border-radius: 6px;
+}
+
+.algo-card canvas {
+    width: 100%;
+    height: 80px;
+    display: block;
+    background: var(--bg-secondary);
+    border-radius: 6px;
+}
+
+.algo-card .stats {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 0.6rem;
+    font-size: 0.72rem;
+    color: var(--text-secondary);
+    font-family: var(--font-display);
+}
+
+.algo-card .stats .time {
+    color: var(--text-primary);
+    font-weight: 600;
+}
+
+.section-label {
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--text-secondary);
+    margin: 1.5rem 0 0.75rem;
+}
+
+.loading {
+    text-align: center;
+    padding: 3rem;
+    color: var(--text-secondary);
+    font-family: var(--font-display);
+}

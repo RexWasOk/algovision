@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AlgoVision</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="app">
+        <header>
+            <div>
+                <div class="logo">Algo<span>Vision</span></div>
+                <div class="tagline">ML-predicted sorting algorithm races</div>
+            </div>
+        </header>
+
+        <div class="control-panel">
+            <div class="control-group">
+                <label>Array Size <span class="value" id="sizeVal">2000</span></label>
+                <input type="range" id="sizeSlider" min="100" max="10000" step="100" value="2000">
+            </div>
+            <div class="control-group">
+                <label>Sorted Ratio <span class="value" id="sortedVal">0.0</span></label>
+                <input type="range" id="sortedSlider" min="0" max="100" value="0">
+            </div>
+            <div class="control-group">
+                <label>Duplicate Ratio <span class="value" id="dupVal">0.1</span></label>
+                <input type="range" id="dupSlider" min="0" max="100" value="10">
+            </div>
+            <div class="control-group">
+                <label>Variance <span class="value" id="varVal">5.0</span></label>
+                <input type="range" id="varSlider" min="1" max="50" value="5">
+            </div>
+            <button class="primary" id="raceBtn">Run race</button>
+        </div>
+
+        <div class="prediction-banner" id="predictionBanner">
+            <div class="label">ML Prediction</div>
+            <div class="prediction" id="predictionText">—</div>
+            <div class="confidence-bars" id="confidenceBars"></div>
+        </div>
+
+        <div class="section-label">Live race results</div>
+        <div class="race-grid" id="raceGrid">
+            <div class="loading">Configure parameters and run a race</div>
+        </div>
+    </div>
+
+    <script src="js/app.js"></script>
+</body>
+</html>
