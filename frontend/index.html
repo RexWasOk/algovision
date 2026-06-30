@@ -45,8 +45,53 @@
         <div class="race-grid" id="raceGrid">
             <div class="loading">Configure parameters and run a race</div>
         </div>
+
+        <div class="section-label">Animated sort</div>
+        <div class="control-panel" style="grid-template-columns: 1fr 1fr auto;">
+            <div class="control-group">
+                <label>Algorithm</label>
+                <select id="animAlgoSelect" style="width:100%; background:var(--bg-secondary); color:var(--text-primary); border:1px solid var(--border); border-radius:6px; padding:0.5rem;">
+                    <option value="bubble">Bubble Sort</option>
+                    <option value="selection">Selection Sort</option>
+                    <option value="insertion">Insertion Sort</option>
+                    <option value="merge">Merge Sort</option>
+                    <option value="quick">Quick Sort</option>
+                    <option value="heap">Heap Sort</option>
+                    <option value="shell">Shell Sort</option>
+                    <option value="counting">Counting Sort</option>
+                </select>
+            </div>
+            <div class="control-group">
+                <label>Elements <span class="value" id="animSizeVal">60</span></label>
+                <input type="range" id="animSizeSlider" min="10" max="150" value="60">
+            </div>
+            <button class="primary" id="animBtn" style="grid-column:auto;">Animate</button>
+        </div>
+        <canvas id="animCanvas" width="1320" height="320" style="width:100%; height:320px; background:var(--bg-card); border:1px solid var(--border); border-radius:12px; display:block;"></canvas>
+
+        <div class="section-label">Pathfinding visualizer</div>
+        <div class="control-panel" style="grid-template-columns: 1fr 1fr auto auto;">
+            <div class="control-group">
+                <label>Algorithm</label>
+                <select id="graphAlgoSelect" style="width:100%; background:var(--bg-secondary); color:var(--text-primary); border:1px solid var(--border); border-radius:6px; padding:0.5rem;">
+                    <option value="bfs">BFS</option>
+                    <option value="dfs">DFS</option>
+                    <option value="dijkstra">Dijkstra</option>
+                    <option value="astar">A*</option>
+                </select>
+            </div>
+            <div class="control-group">
+                <label style="visibility:hidden;">.</label>
+                <div style="font-size:0.78rem; color:var(--text-secondary);">Click grid to place walls. Drag start/end to move them.</div>
+            </div>
+            <button class="primary" id="clearWallsBtn" style="grid-column:auto;">Clear walls</button>
+            <button class="primary" id="findPathBtn" style="grid-column:auto;">Find path</button>
+        </div>
+        <canvas id="gridCanvas" width="1320" height="450" style="width:100%; height:450px; background:var(--bg-card); border:1px solid var(--border); border-radius:12px; display:block; cursor:pointer;"></canvas>
     </div>
 
     <script src="js/app.js"></script>
+    <script src="js/animate.js"></script>
+    <script src="js/pathfinder.js"></script>
 </body>
 </html>
