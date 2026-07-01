@@ -107,3 +107,43 @@ def sort_endpoint(algorithm: str, arr: list[int] = Body(...)):
         return bridge.sort_with_steps(algorithm, arr)
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
+    
+@app.post("/graph/{algorithm}")
+def graph_endpoint(algorithm: str, data: dict = Body(...)):
+    try:
+        import subprocess
+        from pathlib import Path
+
+        BASE_DIR = Path(__file__).parent.parent
+        ENGINE   = BASE_DIR / "engine" / "algovision"
+
+        edges     = data.get("edges", [])
+        positions = data.get("positions", {})
+        start     = data["start"]
+        end       = data["end"]
+
+        # write a simple text format C++ can parse trivially:
+        # line 1: start end num_edges num_positions
+        # next lines: from to weight
+        # next lines: node_id x y
+        tmp = BASE_DIR / "data" / "graph_tmp.txt"
+        tmp.parent.mkdir(exist_ok=True)
+
+        with open(tmp, "w", newline='\n') as f:
+            f.write(f"{start} {end} {len(edges)} {len(positions)}\n")
+            for e in edges:
+                f.write(f"{e['from']} {e['to']} {e['weight']}\n")
+            for node_id, pos in positions.items():
+                f.write(f"{node_id} {pos[0]} {pos[1]}\n")
+
+        result = subprocess.run(
+            [str(ENGINE), "graph", algorithm, str(tmp)],
+            capture_output=True, text=True, timeout=30
+        )
+        if result.returncode != 0:
+            raise RuntimeError(result.stderr.strip())
+
+        import json
+        return json.loads(result.stdout)
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
