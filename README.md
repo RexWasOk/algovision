@@ -1,6 +1,6 @@
 # AlgoVision
 
-An interactive algorithm visualizer with an ML engine that predicts the optimal sorting algorithm for any input distribution — built with a C++ benchmarking engine, Python Random Forest model, and a live web dashboard.
+An interactive algorithm visualizer with an ML engine that predicts the optimal sorting algorithm for any input distribution; built with a C++ benchmarking engine, Python Random Forest model, and a live web dashboard.
 
 ## Demo
 
@@ -10,11 +10,11 @@ An interactive algorithm visualizer with an ML engine that predicts the optimal 
 
 ## What it does
 
-**Algorithm Race** — configure array characteristics (size, sorted ratio, duplicate ratio, variance) via sliders. The ML model predicts which algorithm will win before the race runs. All 8 sorting algorithms race simultaneously — the actual winner validates the prediction live.
+**Algorithm Race**: configure array characteristics (size, sorted ratio, duplicate ratio, variance) via sliders. The ML model predicts which algorithm will win before the race runs. All 8 sorting algorithms race simultaneously — the actual winner validates the prediction live.
 
-**Sort Animation** — watch any sorting algorithm execute step by step. Every swap and comparison is captured by the C++ engine and replayed as a smooth bar chart animation.
+**Sort Animation**: watch any sorting algorithm execute step by step. Every swap and comparison is captured by the C++ engine and replayed as a smooth bar chart animation.
 
-**Pathfinding Visualizer** — draw walls on an interactive grid by clicking and dragging. Place start and end nodes anywhere. Pick BFS, DFS, Dijkstra, or A* and watch the algorithm explore the grid node by node, then highlight the final path.
+**Pathfinding Visualizer**: draw walls on an interactive grid by clicking and dragging. Place start and end nodes anywhere. Pick BFS, DFS, Dijkstra, or A* and watch the algorithm explore the grid node by node, then highlight the final path.
 
 ---
 
