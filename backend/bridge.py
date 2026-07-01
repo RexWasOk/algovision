@@ -1,9 +1,9 @@
 """
 =============================================================
- AlgoVision — bridge.py
+ AlgoVision - bridge.py
 =============================================================
 
-Same IPC pattern as Logsense — subprocess calls to the C++
+Same IPC pattern as Logsense - subprocess calls to the C++
 engine, JSON parsed from stdout. All diagnostic output in
 the C++ engine goes to stderr so stdout stays clean JSON.
 =============================================================
