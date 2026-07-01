@@ -203,10 +203,10 @@ algovision/
 Sorting benchmarks need nanosecond-precision timing and no GC pauses. A Python implementation would add noise to the benchmark measurements making fair comparisons impossible. C++ gives deterministic, reproducible timing.
 
 **Why subprocess IPC over Python bindings?**
-Subprocess keeps the C++ and Python codebases fully independent. No pybind11, no build complexity, no ABI compatibility issues. The engine outputs JSON to stdout, Python reads and parses it — simple, debuggable, and language-agnostic.
+Subprocess keeps the C++ and Python codebases fully independent. No pybind11, no build complexity, no ABI compatibility issues. The engine outputs JSON to stdout, Python reads and parses it; simple, debuggable, and language-agnostic.
 
 **Why Random Forest for algorithm prediction?**
 The relationship between array characteristics and the fastest algorithm is naturally rule-based. "If nearly sorted → insertion sort wins" is a single decision tree split. Random Forest ensembles 100 such trees for robust, noise-resistant predictions across edge cases.
 
 **Why Canvas API over a charting library?**
-The sort animation requires rendering hundreds of frames per second with full control over individual bar colors. Canvas gives direct pixel-level control at 60fps — a charting library would be too slow and inflexible for frame-by-frame animation.
+The sort animation requires rendering hundreds of frames per second with full control over individual bar colors. Canvas gives direct pixel-level control at 60fps; a charting library would be too slow and inflexible for frame-by-frame animation.
